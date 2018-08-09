@@ -1,30 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A JWT based api for rails server 
+* rake db:create
+* rake db:migrate
+* EDITOR="nano" bin/rails credentials:edit
+* add jwt_secret: DemoSecret
+* rails s puma
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-rake db:create
-rake db:migrate
-EDITOR="nano" bin/rails credentials:edit
-add jwt_secret: DemoSecret
-rails s puma
+(Runs on http://localhost:5000)
