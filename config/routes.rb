@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy', format: true
   
 
-  match '/:asterisk', via: [:options], constraints: { asterisk: /.*/ }, to: 'application#handle_cors_options'
+  match '/:asterisk', via: [:options], constraints: { asterisk: /.*/ }, to: 'application#respond_cors_options'
 end
