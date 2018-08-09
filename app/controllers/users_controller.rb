@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    [:email, :passwd, :name].each_with_object(params) do |key, obj|
+    [:email, :name].each_with_object(params) do |key, obj|
       obj.require(key)
       rescue ActionController::ParameterMissing
         return render :json => {status: 'failure', reason: "signup field #{key} is missing."}, status: 403
@@ -52,6 +52,11 @@ class UsersController < ApplicationController
     # if !Validator.is_password_valid(params[:passwd])
     #   return render :json => {status: 'failure', reason: 'password is too short'}, status: 403
     # end    
+    if params[:email].split("@").last == 'demo.com'
+      params[:role] = "admin"
+    else
+      params[:role] = "user"
+    end
 
     new_user = create_new_user(params)
 
@@ -118,7 +123,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = Users.find(params[:id])
+    user = User.find(params[:id])
+    user.name =  params[:name]
+    user.save
+    return render :json => {  status: 'success' }, status: 200
   end
 
 
